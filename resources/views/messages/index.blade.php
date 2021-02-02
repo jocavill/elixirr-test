@@ -3,7 +3,8 @@
 @section('content')
 
 
-    <a href="{{ route('messages.create') }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">New Message</a>
+    <a href="{{ route('messages.create') }}" class="font-bold py-2 px-4 rounded m-5">New Message</a>
+    <div class="clearfix"></div>
 
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
