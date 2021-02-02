@@ -27,9 +27,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('messages.index', [
-            'messages' => Message::all()
-        ]);
+        return view('messages.create');
     }
 
     /**
@@ -40,7 +38,13 @@ class MessageController extends Controller
      */
     public function store(StoreMessage $request)
     {
-        //
+        // todo: call a repository to store the model
+
+        $msg = (new Message())->newQuery()->create($request->only([
+            'body', 'subject'
+        ]));
+
+        return response()->redirectToRoute('messages.index');
     }
 
     /**
@@ -51,6 +55,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        $message->read_at = now();
+        $message->save();
+
+        return view('messages.show', compact('message'));
     }
 }
